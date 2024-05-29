@@ -1,0 +1,182 @@
+:root {
+    --button-bg-color: #596D48;
+    --button-font-color: white;
+    --form-border-style: 2px outset #E5E7EB;
+    --form-box-shadow: 2px 2px 2px 2px #E5E7EB;
+    --form-font: Arial;
+    --form-gray-background: rgb(10 10 10 / 3%);
+    --input-border-style: 1px solid #E5E7EB;
+    --link-visited-color: #596D48;
+}
+
+@font-face {
+    font-family: 'norsebold';
+    src: url('fonts/norse-bold-webfont.woff2') format('woff2'),
+         url('fonts/norse-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html {
+    box-sizing: border-box;
+    color: white;
+    font-family: 'norsebold', Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+    font-weight: 800;
+}
+
+*,
+*::before,
+*::after {
+    font-size: 1.6rem;
+}
+
+h1 {
+    font-size: 5.5rem;
+}
+
+h2, i {
+    font-size: 1.8rem;
+}
+
+#banner-text h2 {
+    margin: 3% auto 2%;
+}
+
+input {
+    border: var(--input-border-style);
+    width: 80%;
+}
+
+label {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+a {
+    color: var(--link-visited-color);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--link-visited-color);
+}
+
+body {
+    margin: 0;
+}
+
+#container {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#bg-div {
+    background-image: url(bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+    width: 30%;
+}
+
+#logo-div {
+    align-items: center;
+    background-color: rgb(0 0 0 / 45%);
+    display: flex;
+    height: 15vh;
+    justify-content: center;
+    margin-top: 40%;
+}
+
+#logo {
+    height: 13vh;
+    width: 5vw;
+}
+
+#form-div {
+    background-color: var(--form-gray-background);
+    color: black;
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: var(--form-font);
+    height: 100%;
+    width: 70%;
+}
+
+.form-section {
+    font-size: 2.4rem;
+    height: 30vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0 auto;
+    width: 92%;
+}
+
+#form-banner {
+    align-items: flex-end;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    justify-content: flex-start;
+    padding: 0 auto 2%;
+}
+
+#banner-text {
+    width: 67%;
+}
+
+#form-content {
+    background-color: white;
+    border: var(--form-border-style);
+    box-shadow: var(--form-box-shadow);
+    height: 30vh;
+    margin: 2% 0 2%;
+    padding: 1.5% 3%;
+    width: 100%;
+}
+
+#legend-header {
+    padding-left: 1%;
+}
+
+#form-data {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 3%;
+    justify-content: flex-start;
+}
+
+.input-div {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1%;
+    width: 30%;
+}
+
+#form-submit {
+    margin: 0 auto 6%;
+    padding: 1% 0;
+}
+
+#submit-button {
+    background-color: var(--button-bg-color);
+    box-shadow: var(--form-box-shadow);
+    border-radius: 5px;
+    color: var(--button-font-color);
+    height: 6vh;
+    padding: 0 auto 2%;
+    width: 25%;
+}
+
+#form-submit p {
+    font-size: 1.4rem;
+    padding: 1.5% 0;
+}
