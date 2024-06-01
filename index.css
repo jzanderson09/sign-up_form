@@ -2,10 +2,14 @@
     --button-bg-color: #596D48;
     --button-font-color: white;
     --form-border-style: 2px outset #E5E7EB;
-    --form-box-shadow: 2px 2px 2px 2px #E5E7EB;
+    --form-box-shadow: 5px 5px 5px 5px #E5E7EB;
     --form-font: Arial;
     --form-gray-background: rgb(10 10 10 / 3%);
-    --input-border-style: 1px solid #E5E7EB;
+    --input-border-style: 2px solid silver;
+    --input-focus-border-style: 2px solid #003CFF;
+    --input-focus-box-shadow: 2px 2px 2px 2px inset silver;
+    --input-invalid-border-style: 2px solid red;
+    --input-valid-border-style: 2px solid green;
     --link-visited-color: #596D48;
 }
 
@@ -33,7 +37,7 @@ html {
 }
 
 h1 {
-    font-size: 5.5rem;
+    font-size: 6.7rem;
 }
 
 h2, i {
@@ -45,8 +49,25 @@ h2, i {
 }
 
 input {
-    border: var(--input-border-style);
+    border-radius: 5px;
     width: 80%;
+}
+
+input:focus {
+    border: var(--input-focus-border-style);
+    box-shadow: var(--input-focus-box-shadow);
+}
+
+input:invalid {
+    border: var(--input-invalid-border-style);
+}
+
+input:placeholder-shown {
+    border: var(--input-border-style);
+}
+
+input:valid {
+    border: var(--input-valid-border-style);
 }
 
 label {
@@ -79,8 +100,8 @@ body {
 #bg-div {
     background-image: url(bg.jpg);
     background-position: center;
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
     margin: 0;
     width: 30%;
@@ -113,9 +134,9 @@ body {
 .form-section {
     font-size: 2.4rem;
     height: 30vh;
+    margin: 0 auto;
     padding-left: 5%;
     padding-right: 5%;
-    margin: 0 auto;
     width: 92%;
 }
 
@@ -125,7 +146,6 @@ body {
     flex-flow: row wrap;
     height: 100%;
     justify-content: flex-start;
-    padding: 0 auto 2%;
 }
 
 #banner-text {
@@ -139,7 +159,7 @@ body {
     height: 30vh;
     margin: 2% 0 2%;
     padding: 1.5% 3%;
-    width: 100%;
+    width: 93.6%;
 }
 
 #legend-header {
@@ -168,12 +188,16 @@ body {
 
 #submit-button {
     background-color: var(--button-bg-color);
-    box-shadow: var(--form-box-shadow);
     border-radius: 5px;
+    box-shadow: var(--form-box-shadow);
     color: var(--button-font-color);
     height: 6vh;
     padding: 0 auto 2%;
     width: 25%;
+}
+
+#submit-button:active {
+    transform: scale(0.98);
 }
 
 #form-submit p {

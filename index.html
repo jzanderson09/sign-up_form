@@ -1,62 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
-        <title>Document</title>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='stylesheet' href='index.css'>
+        <script defer>
+            function inputCheck(id) {
+                let inputVar = document.getElementById(id);
+                if (inputVar.style.border === '1px solid red') {
+                    inputVar.setCustomValidity('This field is required!');
+                } else if (inputVar.style.border === '1px solid green') {
+                    inputVar.setCustomValidity('');
+                }
+                inputVar.reportValidity();
+            }
+            function passwordMatch() {
+                let password = document.getElementById('password');
+                let confirmPassword = document.getElementById('confirm');
+                if (confirmPassword.value !== password.value) {
+                    confirmPassword.setCustomValidity('Passwords must match!');
+                    confirmPassword.reportValidity();
+                } else if (confirmPassword.value === password.value) {
+                    confirmPassword.setCustomValidity('');
+                }
+                password.onchange = passwordMatch;
+                confirmPassword.onkeyup = passwordMatch;
+            }
+            function submitForm() {
+                let formCheck = validateFormEntries();
+                console.log(formCheck);
+                if (formCheck) {
+                    let newUser = document.querySelector('#fname').value;
+                    window.alert(`Welcome, ${newUser}! Your account has been created! Click the Log In link to get started!`);
+                    window.location.reload();
+                } else {
+                    window.alert(`Account creation failure!  Please check the form to ensure it's completed correctly!`);
+                }
+            }
+            function validateFormEntries() {
+                let inputsValid, lengthCheck, passwordCheck;
+                let firstName = document.getElementById('fname').value;
+                let lastName = document.getElementById('lname').value;
+                let email = document.getElementById('email').value;
+                let phoneNumber = document.getElementById('phone').value;
+                let password = document.getElementById('password').value;
+                let passwordConfirm = document.getElementById('confirm').value;
+                lengthCheck = true;
+                [firstName, lastName, email, phoneNumber, password, passwordConfirm].forEach(input => {
+                    if (input.length === 0) {
+                        lengthCheck = false;
+                    }
+                });
+                password === passwordConfirm ? passwordCheck = true : passwordCheck = false;
+                if (lengthCheck && passwordCheck && email.includes('@')) {
+                    inputsValid = true;
+                } else {
+                    inputsValid = false;
+                }
+                return inputsValid;
+            }
+        </script>
+        <title>The Odin Project: Sign-up Form</title>
     </head>
     <body>
-        <div id="container">
-            <div id="bg-div">
-                <div id="logo-div">
-                    <img alt="Odin Logo" id="logo" src="logo.png">
+        <div id='container'>
+            <div id='bg-div'>
+                <div id='logo-div'>
+                    <img alt='Odin Logo' id='logo' src='logo.png'>
                     <h1>ODIN</h1>
                 </div>
             </div>
-            <div id="form-div">
-                <div id="form-banner" class="form-section">
-                    <div id="banner-text">
+            <div id='form-div'>
+                <div id='form-banner' class='form-section'>
+                    <div id='banner-text'>
                         <h2>This is not a real online service! You know you need 
                             something like this in your life to help you realize your 
                             deepest dreams. Sign up <i>now</i> to get started.</h2>
                         <h2>You <i>know</i> you want to.</h2>
                     </div>
                 </div>
-                <div id="form-content" class="form-section">
-                    <form action="/" method="post">
-                        <legend><h2 id="legend-header">Let's do this!</h2></legend>
-                        <div id="form-data">
-                            <div class="input-div">
-                                <label for="fname">First Name</label>
-                                <input id="fname" type="text">
+                <div id='form-content' class='form-section'>
+                    <form action='/' id='sign-up-form' method='post'>
+                        <legend><h2 id='legend-header'>Let's do this!</h2></legend>
+                        <div id='form-data'>
+                            <div class='input-div'>
+                                <label for='fname'>First Name</label>
+                                <input 
+                                    class='form-input' 
+                                    id='fname' 
+                                    minlength='1' 
+                                    name='First Name' 
+                                    onkeyup='inputCheck(id)' 
+                                    pattern='[a-zA-Z\s]+' 
+                                    placeholder='' 
+                                    type='text' 
+                                    required>
                             </div>
-                            <div class="input-div">
-                                <label for="lname">Last Name</label>
-                                <input id="lname" type="text">
+                            <div class='input-div'>
+                                <label for='lname'>Last Name</label>
+                                <input 
+                                    class='form-input' 
+                                    id='lname' 
+                                    minlength='1' 
+                                    name='Last Name' 
+                                    onkeyup='inputCheck(id)' 
+                                    pattern='[a-zA-Z\s]+' 
+                                    placeholder='' 
+                                    type='text'
+                                    required>
                             </div>
-                            <div class="input-div">
-                                <label for="email">Email</label>
-                                <input id="email" name="Email" type="email">
+                            <div class='input-div'>
+                                <label for='email'>Email</label>
+                                <input 
+                                    class='form-input' 
+                                    id='email' 
+                                    minlength='7' 
+                                    name='Email' 
+                                    onkeyup='inputCheck(id)' 
+                                    placeholder='' 
+                                    type='email' 
+                                    required>
                             </div>
-                            <div class="input-div">
-                                <label for="phone-number">Phone Number</label>
-                                <input id="phone-number" name="Phone Number" type="tel">
+                            <div class='input-div'>
+                                <label for='phone'>Phone Number</label>
+                                <input 
+                                    class='form-input' 
+                                    id='phone' 
+                                    maxlength='10' 
+                                    minlength='10' 
+                                    name='Phone Number' 
+                                    onkeyup='inputCheck(id)' 
+                                    placeholder='' 
+                                    type='tel' 
+                                    required>
                             </div>
-                            <div class="input-div">
-                                <label for="user-password">Password</label>
-                                <input id="user-password" name="Password" type="password">
+                            <div class='input-div'>
+                                <label for='password'>Password</label>
+                                <input 
+                                    class='form-input' 
+                                    id='password' 
+                                    minlength='8' 
+                                    name='Password' 
+                                    onkeyup='inputCheck(id)' 
+                                    placeholder='' 
+                                    type='password' 
+                                    required>
                             </div>
-                            <div class="input-div">
-                                <label for="password-confirm">Confirm Password</label>
-                                <input id="password-confirm" name="Confirm Password" type="password">
+                            <div class='input-div'>
+                                <label for='confirm'>Confirm Password</label>
+                                <input 
+                                    class='form-input' 
+                                    id='confirm' 
+                                    minlength='8' 
+                                    name='Confirm Password' 
+                                    onkeypress='passwordMatch()' 
+                                    placeholder='' 
+                                    type='password' 
+                                    required>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div id="form-submit" class="form-section">
-                    <button id="submit-button" type="submit">Create Account</button>
-                    <p>Already have an account? <a href="/">Log in</a></p>
+                <div id='form-submit' class='form-section'>
+                    <button id='submit-button' onclick='submitForm()' type='button'>Create Account</button>
+                    <p style='font-weight: 500;'>Already have an account? <a href='/' style='font-weight: bolder;'>Log in</a></p>
                 </div>
             </div>
         </div>
