@@ -32,6 +32,10 @@
                 if (formCheck) {
                     let newUser = document.querySelector('#fname').value;
                     window.alert(`Welcome, ${newUser}! Your account has been created! Click the Log In link to get started!`);
+                    let myInputs = document.querySelectorAll('input');
+                    for (let i = 0; i < myInputs.length; i++) {
+                        myInputs[i].value = '';
+                    }
                     window.location.reload();
                 } else {
                     window.alert(`Account creation failure!  Please check the form to ensure it's completed correctly!`);
